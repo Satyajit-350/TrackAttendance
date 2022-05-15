@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "659787252749",
+    "project_id": "trackattendance-93622",
+    "storage_bucket": "trackattendance-93622.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659787252749:android:ade3cc98f034c5bed7c144",
+        "android_client_info": {
+          "package_name": "com.example.trackattendance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "659787252749-9sarvapn4s8erojc9kc8hphdc30fhnnt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZx3k24Fn_3yHscncwpSQiiXZcqSdLXEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "659787252749-9sarvapn4s8erojc9kc8hphdc30fhnnt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
