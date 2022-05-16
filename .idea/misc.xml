@@ -4,11 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/TrackAttendance/app/src/main/res/drawable/button_shape.xml" value="0.1775" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/TrackAttendance/app/src/main/res/drawable/dashboard_background.xml" value="0.1775" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/TrackAttendance/app/src/main/res/drawable/ic_add_img.xml" value="0.1775" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/TrackAttendance/app/src/main/res/drawable/ic_facebook.xml" value="0.1775" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/TrackAttendance/app/src/main/res/drawable/ic_login_hero.xml" value="0.1775" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/TrackAttendance/app/src/main/res/layout/activity_courses.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/TrackAttendance/app/src/main/res/layout/activity_main.xml" value="0.215625" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/TrackAttendance/app/src/main/res/layout/activity_sign_in.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/TrackAttendance/app/src/main/res/layout/activity_sign_up.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/TrackAttendance/app/src/main/res/layout/course_items.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/TrackAttendance/app/src/main/res/menu/menu_item.xml" value="0.25416666666666665" />
       </map>
     </option>

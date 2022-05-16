@@ -17,23 +17,33 @@
         android:theme="@style/Theme.TrackAttendance"
         tools:targetApi="31">
         <activity
+            android:name=".MenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CoursesActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignUp.SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".SignIn.SignInActivity"
-            android:exported="true" >
-
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -1,8 +1,12 @@
 package com.example.trackattendance.Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Users {
 
     private String profile_pic,userName,userId,email,phone,password,department,designation,about;
+    private List<String> courseIds;
 
     public Users(String profile_pic, String userName, String userId, String email,
                  String phone, String password, String department, String designation, String about) {
@@ -26,6 +30,13 @@ public class Users {
         this.email = email;
         this.phone = phone;
         this.password = password;
+        this.courseIds = new ArrayList<>();
+    }
+
+    public Users(String email, String userName, List<String> courseIds){
+        this.email = email;
+        this.userName = userName;
+        this.courseIds = courseIds;
     }
 
     public String getUserId() {
@@ -98,5 +109,13 @@ public class Users {
 
     public void setAbout(String about) {
         this.about = about;
+    }
+
+    public List<String> getCourseIds() {
+        return courseIds;
+    }
+
+    public void setCourseIds(List<String> courseIds) {
+        this.courseIds = courseIds;
     }
 }

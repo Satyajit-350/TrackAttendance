@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
+import com.pixplicity.easyprefs.library.Prefs;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -46,6 +47,13 @@ public class SignUpActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
+        new Prefs.Builder()
+                .setContext(this)
+                .setMode(MODE_PRIVATE)
+                .setPrefsName(getPackageName())
+                .setUseDefaultSharedPreference(true)
+                .build();
+
         dialog = new ProgressDialog(SignUpActivity.this);
         dialog.setTitle("Creating Account");
         dialog.setMessage("Creating your Account");
@@ -62,6 +70,9 @@ public class SignUpActivity extends AppCompatActivity {
                 String email = binding.editTextEmail.getText().toString();
                 String phone = binding.editTextMobile.getText().toString();
                 String password = binding.editTextPassword.getText().toString();
+
+                // TODO add validation
+
                 mAuth.createUserWithEmailAndPassword(email,password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -71,6 +82,13 @@ public class SignUpActivity extends AppCompatActivity {
                                     Users users = new Users(name,email,phone,password);
                                     String id = task.getResult().getUser().getUid();
                                     database.getReference().child("Users").child(id).setValue(users);
+
+                                    Intent intent = new Intent(SignUpActivity.this,MainActivity.class);
+
+                                    Prefs.putString("UserID", users.getUserId());
+                                    Prefs.putString("UserEmail", users.getEmail());
+                                    Prefs.putString("UserDisplayName", users.getUserName());
+                                    Prefs.putString("UserCourseIds", "");
 
                                     Toast.makeText(SignUpActivity.this, "Account Created Successfully",
                                             Toast.LENGTH_SHORT).show();
@@ -153,6 +171,12 @@ public class SignUpActivity extends AppCompatActivity {
                             database.getReference().child("Users").child(user.getUid()).setValue(users);
 
                             Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+
+                            /**
+                             * TODO
+                             * Add Preferences here
+                             */
+
                             startActivity(intent);
                             Toast.makeText(SignUpActivity.this, "Sign In with google", Toast.LENGTH_SHORT).show();
                         } else {
@@ -163,5 +187,8 @@ public class SignUpActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+    private void validation(){
+        //TODO
     }
 }

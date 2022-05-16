@@ -27,7 +27,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.pixplicity.easyprefs.library.Prefs;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -68,6 +77,41 @@ public class SignInActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 dialog.dismiss();
                                 if(task.isSuccessful()){
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    DatabaseReference databaseReference = database.getReference().child("Users").child(user.getUid());
+                                    databaseReference.addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            Users currUser = new Users();
+                                            for(DataSnapshot ds: snapshot.getChildren()){
+                                                switch (ds.getKey()){
+                                                    case "email":
+                                                        currUser.setEmail(ds.getValue().toString());
+                                                        break;
+                                                    case "userName":
+                                                        currUser.setUserName(ds.getValue().toString());
+                                                        break;
+                                                    case "courseIds":
+                                                        List<String> courseIds = new ArrayList<>();
+                                                        for (DataSnapshot courseData: ds.getChildren()){
+                                                            courseIds.add((String)courseData.getValue());
+                                                        }
+                                                        currUser.setCourseIds(courseIds);
+                                                        break;
+                                                }
+                                            }
+                                            if (currUser.getCourseIds()==null) currUser.setCourseIds(new ArrayList<String>());
+                                            Prefs.putString("UserID", new Gson().toJson(currUser.getCourseIds()));
+                                            Prefs.putString("UserEmail", currUser.getEmail());
+                                            Prefs.putString("UserDisplayName", currUser.getUserName());
+                                            Prefs.putString("UserCourseIds", new Gson().toJson(currUser.getCourseIds()));
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                            //toast
+                                        }
+                                    });
                                     Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                                     startActivity(intent);
                                 }else{
